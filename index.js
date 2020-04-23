@@ -1,24 +1,3 @@
-function checkItem(){
-
-    $('.shopping-item-toggle .button-label').on('click',function(){
-
-        $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
-        console.log('check');
-        
-    })
-
-}
-
-function deleteItem(){
-
-    $('.shopping-item-delete .button-label').on('click',function(){
-
-        $(this).closest('li').remove();
-        
-    })
-
-}
-
 function addItem(){
 
     $('#js-shopping-list-form').submit(function(event){
@@ -28,6 +7,7 @@ function addItem(){
     const item = $(this).find('#shopping-list-entry').val();
 
     if(item != ''){
+
         $('.shopping-list').append(
             '<li>'+
                 '<span class="shopping-item">'+item+'</span>'+
@@ -41,6 +21,7 @@ function addItem(){
                 '</div>'+
             '</li>'
         );
+
         $(this).find('#shopping-list-entry').val('');
     }
 
@@ -48,7 +29,28 @@ function addItem(){
 
 }
 
+function checkItem(){
+
+    $('ul.shopping-list').on('click', '.shopping-item-toggle',function(){
+
+        $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
+
+    })
+
+}
+
+function deleteItem(){
+
+    $('ul.shopping-list').on('click', '.shopping-item-delete', function(){
+
+        $(this).closest('li').remove();
+        
+    })
+
+}
+
+
+$(addItem);
 $(checkItem);
 $(deleteItem);
-$(addItem);
 
